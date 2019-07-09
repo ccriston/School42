@@ -1,0 +1,4 @@
+at-c2.21-school.ru.
+
+#ifconfig en0 | grep "inet " | awk '{print $2}'
+#nslookup 192.168.21.45 | grep name | awk '{print $4}'

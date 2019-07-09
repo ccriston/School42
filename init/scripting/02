@@ -1,0 +1,13 @@
+#!/bin/bash
+RED='\033[1;31m'
+GRE='\033[1;32m'
+LCY='\033[1;36m'
+NC='\033[0m'
+
+echo "${RED}BEFORE: ${NC}"
+cat /etc/passwd | grep '/home/' | awk -F':' '{print $1}'
+USER=$1
+pgrep --u $USER | while read PID; do sudo kill $PID; done
+sudo userdel $USER
+echo "${GRE}AFTER SCRIPT: ${NC}"
+cat /etc/passwd | grep '/home/' | awk -F':' '{print $1}'
